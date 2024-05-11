@@ -9,6 +9,7 @@ import Assignments from "../pages/Assignments";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import PendingAssignments from "../pages/PendingAssignments";
 import MySubmitted from "../pages/MySubmitted";
+import UpdateAssignment from "../pages/UpdateAssignment";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/assignment/:id",
         element: <AssignmentDetails></AssignmentDetails>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateAssignment></UpdateAssignment>,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`),
       },

@@ -37,7 +37,10 @@ const AssignmentCard = ({ assignment }) => {
 
           <div>
             <div className="flex gap-2 w-full">
-              <button className="btn flex-1">Update</button>
+              <Link to={`/update/${_id}`}>
+                <button className="btn flex-1">Update</button>
+              </Link>
+
               <button className="btn flex-1">Delete</button>
             </div>
             <Link to={`/assignment/${_id}`}>
