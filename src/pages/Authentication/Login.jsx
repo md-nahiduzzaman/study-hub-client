@@ -38,15 +38,18 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className=" bg-slate-100">
+      <div className="container mx-auto px-2  flex min-h-[calc(100vh-168px)]">
         <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
           <div className="flex justify-center mx-auto">
-            <img
-              className="w-auto h-7 sm:h-8"
-              src="https://merakiui.com/images/logo.svg"
-              alt=""
-            ></img>
+            <div className="text-center justify-center flex flex-col">
+              <img className="w-[100%]" src="/public/Asset 1.png" alt=""></img>
+            </div>
+          </div>
+          <div>
+            <h1 className="font-bold text-3xl text-center mt-8">
+              Please Login
+            </h1>
           </div>
 
           <form onSubmit={handleSignIn} className="mt-6">
