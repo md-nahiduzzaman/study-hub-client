@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import toast from "react-hot-toast";
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, handleDelete }) => {
   const { user } = useAuth();
 
   const {
@@ -37,11 +39,12 @@ const AssignmentCard = ({ assignment }) => {
 
           <div>
             <div className="flex gap-2 w-full">
-              <Link to={`/update/${_id}`}>
-                <button className="btn flex-1">Update</button>
+              <Link to={`/update/${_id}`} className="btn flex-1">
+                <button>Update</button>
               </Link>
-
-              <button className="btn flex-1">Delete</button>
+              <Link className="btn flex-1">
+                <button onClick={() => handleDelete(_id)}>Delete</button>
+              </Link>
             </div>
             <Link to={`/assignment/${_id}`}>
               <button className="btn w-full mt-2">View Details</button>
