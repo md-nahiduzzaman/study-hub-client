@@ -30,6 +30,7 @@ const AssignmentDetails = () => {
     const feedback = "";
     const assignmentId = _id;
     const email = user?.email;
+    const examineeName = user?.displayName;
 
     const submittedData = {
       title,
@@ -41,6 +42,7 @@ const AssignmentDetails = () => {
       feedback,
       assignmentId,
       email,
+      examineeName,
       owner_email: owner?.email,
     };
 

@@ -9,7 +9,7 @@ const MySubmitted = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [user]);
 
   const getData = async () => {
     const { data } = await axios(
