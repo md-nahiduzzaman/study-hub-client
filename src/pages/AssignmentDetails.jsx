@@ -36,6 +36,7 @@ const AssignmentDetails = () => {
       docLink,
       note,
       status,
+      marks,
       obtainMarks,
       feedback,
       assignmentId,

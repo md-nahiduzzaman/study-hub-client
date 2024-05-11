@@ -1,4 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
+
 const MySubmitted = () => {
+  const { user } = useAuth();
+  const [assignments, setAssignments] = useState([]);
+  console.log(assignments);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const { data } = await axios(
+      `${import.meta.env.VITE_API_URL}/my-submission/${user?.email}`
+    );
+    setAssignments(data);
+  };
+
   return (
     <>
       <div>
@@ -18,12 +37,16 @@ const MySubmitted = () => {
                   </tr>
                 </thead>
                 <tbody>
+                  {assignments.map((assignment) => (
+                    <tr key={assignment._id}>
+                      <td>{assignment?.title}</td>
+                      <td>{assignment?.status}</td>
+                      <td>{assignment?.marks}</td>
+                      <td>{assignment?.obtainMarks}</td>
+                      <td>{assignment?.feedback}</td>
+                    </tr>
+                  ))}
                   {/* row 1 */}
-                  <tr>
-                    <td>Cy Ganderton</td>
-                    <td>Quality Control Specialist</td>
-                    <td>Blue</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
