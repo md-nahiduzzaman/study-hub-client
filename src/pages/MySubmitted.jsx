@@ -46,7 +46,6 @@ const MySubmitted = () => {
                       <td>{assignment?.feedback}</td>
                     </tr>
                   ))}
-                  {/* row 1 */}
                 </tbody>
               </table>
             </div>
