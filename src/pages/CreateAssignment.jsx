@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateAssignment = () => {
   const { user } = useAuth();
