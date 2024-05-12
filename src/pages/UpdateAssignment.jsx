@@ -66,6 +66,7 @@ const UpdateAssignment = () => {
           <div className="mt-6">
             <h1 className="font-bold text-3xl">Update Assignment</h1>
           </div>
+
           <form
             onSubmit={handleFormSubmit}
             className="grid grid-cols-2 gap-4 bg-white p-11 max-w-screen-md mt-7 "
