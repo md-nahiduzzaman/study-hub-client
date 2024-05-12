@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -152,12 +152,9 @@ const Login = () => {
           <p className="mt-8 text-xs font-light text-center text-gray-400">
             {" "}
             Don't have an account?{" "}
-            <a
-              href="#"
-              className="font-medium text-gray-700 dark:text-gray-200 hover:underline"
-            >
-              Create One
-            </a>
+            <Link to="/register">
+              <span className="underline underline-offset-2 ">Register</span>{" "}
+            </Link>
           </p>
         </div>
       </div>

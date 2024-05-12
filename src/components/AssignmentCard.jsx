@@ -24,7 +24,7 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
           <img
             src={image}
             alt=""
-            className="object-cover object-center w-full rounded-md h-72 bg-gray-500 dark:bg-gray-500"
+            className="object-cover object-center w-full rounded-md h-56 bg-gray-500 dark:bg-gray-500"
           />
           <div className="mt-6 mb-2">
             <h2 className="text-2xl font-bold tracking-wide">{title}</h2>
@@ -39,11 +39,16 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
 
           <div>
             <div className="flex gap-2 w-full">
-              <Link to={`/update/${_id}`} className="btn flex-1">
-                <button>Update</button>
+              <Link to={`/update/${_id}`} className="w-full">
+                <button className="btn flex-1 w-full">Update</button>
               </Link>
-              <Link className="btn flex-1">
-                <button onClick={() => handleDelete(_id, owner)}>Delete</button>
+              <Link className="w-full">
+                <button
+                  className="btn flex-1 w-full"
+                  onClick={() => handleDelete(_id, owner)}
+                >
+                  Delete
+                </button>
               </Link>
             </div>
             <Link to={`/assignment/${_id}`}>

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const PendingAssignments = () => {
+  const [numberError, setNumberError] = useState("");
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
@@ -13,7 +14,7 @@ const PendingAssignments = () => {
 
   useEffect(() => {
     getData();
-  }, [assignments]);
+  }, []);
 
   const getData = async () => {
     const { data } = await axiosSecure(`/pending-submission/${"Pending"}`);
@@ -21,7 +22,8 @@ const PendingAssignments = () => {
   };
 
   // submit result
-  const handleFormSubmit = async (e, id) => {
+  const handleFormSubmit = async (e, id, marks) => {
+    console.log(marks);
     e.preventDefault();
     const form = e.target;
     const obtainMarks = form.obtainMarks.value;
@@ -32,8 +34,16 @@ const PendingAssignments = () => {
       feedback,
       status,
     };
-
     console.log(submittedData);
+
+    // reset error
+    setNumberError("");
+
+    // Validate obtained marks
+    if (obtainMarks > marks) {
+      setNumberError(`Obtained marks should be less than or equal to ${marks}`);
+      return;
+    }
 
     try {
       const { data } = await axios.put(
@@ -42,12 +52,13 @@ const PendingAssignments = () => {
       );
       console.log(data);
       toast.success("Update Successfully");
+      getData();
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
     }
 
-    const modal = document.getElementById("my_modal_1");
+    const modal = document.getElementById(`my_modal_${id}`);
     modal.close();
   };
 
@@ -81,18 +92,20 @@ const PendingAssignments = () => {
 
                       <td>
                         <div>
-                          {/* <Link>
-                    <button className="btn">Take assignment</button>
-                  </Link> */}
                           <button
                             className="btn"
                             onClick={() =>
-                              document.getElementById("my_modal_1").showModal()
+                              document
+                                .getElementById(`my_modal_${assignment._id}`)
+                                .showModal()
                             }
                           >
-                            open modal
+                            Give Mark
                           </button>
-                          <dialog id="my_modal_1" className="modal text-center">
+                          <dialog
+                            id={`my_modal_${assignment._id}`}
+                            className="modal text-center"
+                          >
                             <div className="modal-box">
                               <h3 className="font-bold text-lg">
                                 Submit Result
@@ -110,12 +123,16 @@ const PendingAssignments = () => {
                               <div className="modal-action justify-center">
                                 <form
                                   onSubmit={(e) =>
-                                    handleFormSubmit(e, assignment?._id)
+                                    handleFormSubmit(
+                                      e,
+                                      assignment?._id,
+                                      assignment?.marks
+                                    )
                                   }
                                   method="dialog"
                                   className="w-[80%]"
                                 >
-                                  {/* title */}
+                                  {/* Obtain Maks */}
                                   <div className="col-span-2 w-full">
                                     <label className="form-control w-full">
                                       <div className="label">
@@ -128,7 +145,8 @@ const PendingAssignments = () => {
                                         // placeholder=""
                                         name="obtainMarks"
                                         className="input input-bordered w-full"
-                                        defaultValue={assignment?.obtainMarks}
+                                        // defaultValue={assignment?.obtainMarks}
+                                        required
                                       />
                                     </label>
                                   </div>
@@ -142,10 +160,16 @@ const PendingAssignments = () => {
                                         className="textarea textarea-bordered"
                                         placeholder="Your Feedback"
                                         name="feedback"
-                                        defaultValue={assignment?.feedback}
+                                        // defaultValue={assignment?.feedback}
+                                        required
                                       ></textarea>
                                     </label>
                                   </div>
+                                  {numberError && (
+                                    <p className="text-red-700">
+                                      {numberError}
+                                    </p>
+                                  )}
                                   {/* if there is a button in form, it will close the modal */}
                                   <button className="btn mt-2 w-full">
                                     Submit

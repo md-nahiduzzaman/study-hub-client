@@ -19,6 +19,12 @@ const CreateAssignment = () => {
     const image = form.image.value;
     const difficultyLevel = form.difficultyLevel.value;
     const deadline = startDate;
+
+    if (marks < 50 || marks > 100) {
+      toast.error("Marks should be greater than 50 and less than 100");
+      return;
+    }
+
     const assignmentData = {
       title,
       description,
@@ -39,6 +45,7 @@ const CreateAssignment = () => {
         assignmentData
       );
       console.log(data);
+      form.reset();
       toast.success("Assignment Add Successfully");
     } catch (err) {
       console.log(err);
@@ -67,7 +74,8 @@ const CreateAssignment = () => {
                   type="text"
                   placeholder="Assignment title"
                   name="title"
-                  className="input input-bordered w-full  "
+                  className="input input-bordered w-full"
+                  required
                 />
               </label>
             </div>
@@ -81,6 +89,7 @@ const CreateAssignment = () => {
                   className="textarea textarea-bordered"
                   placeholder="Description"
                   name="description"
+                  required
                 ></textarea>
               </label>
             </div>
@@ -95,6 +104,7 @@ const CreateAssignment = () => {
                   placeholder="marks"
                   name="marks"
                   className="input input-bordered w-full max-w-xs"
+                  required
                 />
               </label>
             </div>
@@ -109,6 +119,7 @@ const CreateAssignment = () => {
                   placeholder="image"
                   name="image"
                   className="input input-bordered w-full max-w-xs"
+                  required
                 />
               </label>
             </div>
@@ -123,6 +134,7 @@ const CreateAssignment = () => {
                 name="difficultyLevel"
                 id="difficultyLevel"
                 className="input input-bordered w-full max-w-xs"
+                required
               >
                 <option>Easy</option>
                 <option>Medium</option>
@@ -140,6 +152,7 @@ const CreateAssignment = () => {
                 className="input input-bordered w-full max-w-xs"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
+                required
               />
             </div>
             {/* submit */}

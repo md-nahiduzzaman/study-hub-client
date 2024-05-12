@@ -7,7 +7,12 @@ const MySubmitted = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
+  const [showIframe, setShowIframe] = useState(false);
   console.log(assignments);
+
+  const toggleIframe = () => {
+    setShowIframe(!showIframe);
+  };
 
   useEffect(() => {
     getData();
@@ -32,6 +37,7 @@ const MySubmitted = () => {
                     <th>Assignment Title</th>
                     <th>Assignment Status</th>
                     <th>Assignment marks</th>
+                    <th>My Submission</th>
                     <th>Obtained marks</th>
                     <th>Feedback</th>
                   </tr>
@@ -42,6 +48,41 @@ const MySubmitted = () => {
                       <td>{assignment?.title}</td>
                       <td>{assignment?.status}</td>
                       <td>{assignment?.marks}</td>
+                      <td>
+                        {/* Open the modal using document.getElementById('ID').showModal() method */}
+                        <button
+                          className="btn"
+                          onClick={() =>
+                            document
+                              .getElementById(`my_modal_${assignment?._id}`)
+                              .showModal()
+                          }
+                        >
+                          View Doc
+                        </button>
+                        <dialog
+                          id={`my_modal_${assignment?._id}`}
+                          className="modal"
+                        >
+                          <div className="modal-box">
+                            <p className="py-4">
+                              Press ESC key or click outside to close
+                            </p>
+                            <iframe
+                              title="PDF Viewer"
+                              src={assignment?.docLink}
+                              width="100%"
+                              height="500px"
+                              style={{ border: "none" }}
+                            ></iframe>
+                          </div>
+                          <form method="dialog" className="modal-backdrop">
+                            <button>close</button>
+                          </form>
+                        </dialog>
+                      </td>
+
+                      {/* <td>{assignment?.docLink}</td> */}
                       <td>{assignment?.obtainMarks}</td>
                       <td>{assignment?.feedback}</td>
                     </tr>

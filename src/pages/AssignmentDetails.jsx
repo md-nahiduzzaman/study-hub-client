@@ -73,7 +73,7 @@ const AssignmentDetails = () => {
               <img
                 src={image}
                 alt="image"
-                className="object-cover w-full h-full rounded-md xl:col-span-2 "
+                className="object-cover w-full h-80 rounded-md xl:col-span-2 "
               />
               <div className="w-full p-8 rounded-md   xl:col-span-3">
                 <h1 className="text-5xl font-extrabold ">{title}</h1>
@@ -98,7 +98,7 @@ const AssignmentDetails = () => {
                       document.getElementById("my_modal_1").showModal()
                     }
                   >
-                    open modal
+                    Take assignment
                   </button>
                   <dialog id="my_modal_1" className="modal text-center">
                     <div className="modal-box">
@@ -123,6 +123,7 @@ const AssignmentDetails = () => {
                                 placeholder="PDF/Doc Link"
                                 name="docLink"
                                 className="input input-bordered w-full"
+                                required
                               />
                             </label>
                           </div>
@@ -136,6 +137,7 @@ const AssignmentDetails = () => {
                                 className="textarea textarea-bordered"
                                 placeholder="Note"
                                 name="note"
+                                required
                               ></textarea>
                             </label>
                           </div>
