@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +17,15 @@ const Login = () => {
     console.log({ email, pass });
     try {
       const result = await signInUser(email, pass);
-      console.log(result);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
+      // console.log(result);
       navigate(location?.state || "/");
       toast.success("Signin Successful");
     } catch (err) {
@@ -28,8 +37,17 @@ const Login = () => {
   // google sign in
   const handleGoogleSignIn = async () => {
     try {
-      await googleLogin();
-      toast.success("Signin Successful");
+      const result = await googleLogin();
+      // console.log(result);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
+      toast.success("Sign In Successful");
       navigate(location?.state || "/");
     } catch (err) {
       console.log(err);
