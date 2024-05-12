@@ -3,8 +3,10 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const PendingAssignments = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   console.log(assignments);
@@ -14,9 +16,7 @@ const PendingAssignments = () => {
   }, [assignments]);
 
   const getData = async () => {
-    const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/pending-submission/${"Pending"}`
-    );
+    const { data } = await axiosSecure(`/pending-submission/${"Pending"}`);
     setAssignments(data);
   };
 

@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MySubmitted = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   console.log(assignments);
@@ -12,9 +14,7 @@ const MySubmitted = () => {
   }, [user]);
 
   const getData = async () => {
-    const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/my-submission/${user?.email}`
-    );
+    const { data } = await axiosSecure(`/my-submission/${user?.email}`);
     setAssignments(data);
   };
 

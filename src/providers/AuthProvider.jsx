@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -45,8 +46,14 @@ const AuthProvider = ({ children }) => {
   };
 
   // logout user
-  const logout = () => {
+  const logout = async () => {
     setUser(null);
+
+    const { data } = await axios(`${import.meta.env.VITE_API_URL}/logout`, {
+      withCredentials: true,
+    });
+    console.log(data);
+
     signOut(auth);
     toast.success("Successfully Logout!");
   };
