@@ -43,7 +43,7 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
                 <button>Update</button>
               </Link>
               <Link className="btn flex-1">
-                <button onClick={() => handleDelete(_id)}>Delete</button>
+                <button onClick={() => handleDelete(_id, owner)}>Delete</button>
               </Link>
             </div>
             <Link to={`/assignment/${_id}`}>

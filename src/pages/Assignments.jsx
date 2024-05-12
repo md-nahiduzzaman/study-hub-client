@@ -3,8 +3,10 @@ import AssignmentCard from "../components/AssignmentCard";
 import { useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const Assignments = () => {
+  const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   const [filter, setFilter] = useState("");
 
@@ -19,7 +21,11 @@ const Assignments = () => {
     setAssignments(data);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, owner) => {
+    // console.log(id, owner.email);
+    if (user.email !== owner.email) {
+      return toast.error("Operation Failed");
+    }
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_URL}/assignment/${id}`
