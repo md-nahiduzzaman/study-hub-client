@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Assignments = () => {
   const { user } = useAuth();
@@ -21,23 +22,47 @@ const Assignments = () => {
     setAssignments(data);
   };
 
-  const handleDelete = async (id, owner) => {
+  const handleDelete = (id, owner) => {
     // console.log(id, owner.email);
     if (user.email !== owner.email) {
       return toast.error("Operation Failed");
     }
-    try {
-      const { data } = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/assignment/${id}`
-      );
-      console.log(data);
-      toast.success("Delete Successful");
-      getData();
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axios.delete(
+            `${import.meta.env.VITE_API_URL}/assignment/${id}`
+          );
+          console.log(data);
+          toast.success("Delete Successful");
+          getData();
+        } catch (err) {
+          console.log(err);
+          toast.error(err?.message);
+        }
+      }
+    });
   };
+
+  // try {
+  //   const { data } = await axios.delete(
+  //     `${import.meta.env.VITE_API_URL}/assignment/${id}`
+  //   );
+  //   console.log(data);
+  //   toast.success("Delete Successful");
+  //   getData();
+  // } catch (err) {
+  //   console.log(err);
+  //   toast.error(err?.message);
+  // }
 
   return (
     <>

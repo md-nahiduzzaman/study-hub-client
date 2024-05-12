@@ -4,9 +4,11 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const UpdateAssignment = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
 
@@ -52,7 +54,9 @@ const UpdateAssignment = () => {
         assignmentData
       );
       console.log(data);
+
       toast.success("Update Successfully");
+      navigate(location?.state || "/assignments");
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -162,7 +166,7 @@ const UpdateAssignment = () => {
             </div>
             {/* submit */}
             <div className="col-span-2">
-              <button className="btn w-full ">Create Assignment</button>
+              <button className="btn w-full ">Update Assignment</button>
             </div>
           </form>
         </div>
