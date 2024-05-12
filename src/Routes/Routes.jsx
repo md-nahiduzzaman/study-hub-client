@@ -10,6 +10,7 @@ import AssignmentDetails from "../pages/AssignmentDetails";
 import PendingAssignments from "../pages/PendingAssignments";
 import MySubmitted from "../pages/MySubmitted";
 import UpdateAssignment from "../pages/UpdateAssignment";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-assignment",
-        element: <CreateAssignment></CreateAssignment>,
+        element: (
+          <PrivateRoute>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/assignments",
@@ -39,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignment/:id",
-        element: <AssignmentDetails></AssignmentDetails>,
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`),
       },
@@ -51,11 +60,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/pending-assignment",
-        element: <PendingAssignments></PendingAssignments>,
+        element: (
+          <PrivateRoute>
+            <PendingAssignments></PendingAssignments>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-submitted",
-        element: <MySubmitted></MySubmitted>,
+        element: (
+          <PrivateRoute>
+            <MySubmitted></MySubmitted>
+          </PrivateRoute>
+        ),
       },
     ],
   },
