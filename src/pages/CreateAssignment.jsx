@@ -4,10 +4,12 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const CreateAssignment = () => {
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure();
 
   // add assignment
   const handleFormSubmit = async (e) => {
@@ -40,10 +42,7 @@ const CreateAssignment = () => {
     };
     console.log(assignmentData);
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/assignment`,
-        assignmentData
-      );
+      const { data } = await axiosSecure.post(`/assignment`, assignmentData);
       console.log(data);
       form.reset();
       toast.success("Assignment Add Successfully");

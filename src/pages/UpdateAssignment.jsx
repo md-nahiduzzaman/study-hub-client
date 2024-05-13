@@ -5,12 +5,14 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateAssignment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure();
 
   const assignment = useLoaderData();
   const {
@@ -49,10 +51,7 @@ const UpdateAssignment = () => {
     };
     console.log(assignmentData);
     try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/update/${_id}`,
-        assignmentData
-      );
+      const { data } = await axiosSecure.put(`/update/${_id}`, assignmentData);
       console.log(data);
 
       toast.success("Update Successfully");

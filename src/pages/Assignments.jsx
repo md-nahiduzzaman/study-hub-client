@@ -5,11 +5,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Assignments = () => {
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   const [filter, setFilter] = useState("");
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     getData();
@@ -38,9 +40,7 @@ const Assignments = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(
-            `${import.meta.env.VITE_API_URL}/assignment/${id}`
-          );
+          const { data } = await axiosSecure.delete(`/assignment/${id}`);
           console.log(data);
           toast.success("Delete Successful");
           getData();
