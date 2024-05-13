@@ -50,7 +50,17 @@ const MySubmitted = () => {
                   {assignments.map((assignment) => (
                     <tr key={assignment._id}>
                       <td>{assignment?.title}</td>
-                      <td>{assignment?.status}</td>
+                      <td
+                        className={`${
+                          assignment?.status === "Pending" &&
+                          "font-bold text-red-500"
+                        }  ${
+                          assignment?.status === "Complete" &&
+                          "font-bold text-green-500"
+                        }`}
+                      >
+                        {assignment?.status}
+                      </td>
                       <td>{assignment?.marks}</td>
                       <td>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}

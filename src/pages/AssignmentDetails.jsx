@@ -67,33 +67,61 @@ const AssignmentDetails = () => {
   return (
     <>
       <div>
-        <div className="container mx-auto px-2 min-h-[calc(100vh-168px)]">
-          <section className="p-6">
+        <div className="container mx-auto px-2 min-h-[100vh]">
+          <section className="p-6 mt-9">
             <div className="container grid gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-5">
               <img
                 src={image}
                 alt="image"
                 className="object-cover w-full h-80 rounded-md xl:col-span-2 "
               />
-              <div className="w-full p-8 rounded-md   xl:col-span-3">
-                <h1 className="text-5xl font-extrabold ">{title}</h1>
-                <p className="my-8">{description}</p>
+              <div className="w-full rounded-md   xl:col-span-3">
+                <h1 className="text-3xl font-bold ">{title}</h1>
+                <p className="my-8">
+                  {" "}
+                  <span className="font-bold">Description: </span> {description}
+                </p>
+                <hr />
                 <div>
-                  <p>Marks: {marks}</p>
-                  <p>Difficulty Level: {difficultyLevel}</p>
-                  <p>Deadline: {new Date(deadline).toLocaleDateString()}</p>
+                  <h1 className="text-xl font-medium mt-8 pb-2">
+                    Assignment Details
+                  </h1>
+                  <p>
+                    <span className="font-semibold">Marks:</span> {marks}
+                  </p>
+                  <p>
+                    {" "}
+                    <span className="font-semibold">
+                      Difficulty Level:
+                    </span>{" "}
+                    {difficultyLevel}
+                  </p>
+                  <p>
+                    {" "}
+                    <span className="font-semibold">Deadline: </span>
+                    {new Date(deadline).toLocaleDateString()}
+                  </p>
                 </div>
                 <div className="mt-8 mb-8">
-                  <h1>Owner Details</h1>
-                  <p>Name: {owner?.name}</p>
-                  <p>Email: {owner?.email}</p>
+                  <h1 className="text-xl font-medium mt-8 pb-2">
+                    Owner Details
+                  </h1>
+                  <p>
+                    {" "}
+                    <span className="font-semibold">Name: </span>
+                    {owner?.name}
+                  </p>
+                  <p>
+                    {" "}
+                    <span className="font-semibold">Email:</span> {owner?.email}
+                  </p>
                 </div>
                 <div>
                   {/* <Link>
                     <button className="btn">Take assignment</button>
                   </Link> */}
                   <button
-                    className="btn"
+                    className="btn bg-[#59c6bc] text-white hover:bg-[#368880]"
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
@@ -102,7 +130,9 @@ const AssignmentDetails = () => {
                   </button>
                   <dialog id="my_modal_1" className="modal text-center">
                     <div className="modal-box">
-                      <h3 className="font-bold text-lg">Submit your task</h3>
+                      <h3 className="font-bold text-lg">
+                        Submit Your Assignment
+                      </h3>
 
                       <div className="modal-action justify-center">
                         <form
@@ -142,7 +172,9 @@ const AssignmentDetails = () => {
                             </label>
                           </div>
                           {/* if there is a button in form, it will close the modal */}
-                          <button className="btn mt-2 w-full">Submit</button>
+                          <button className="btn bg-[#59c6bc] text-white hover:bg-[#368880] w-full mt-6">
+                            Submit
+                          </button>
                         </form>
                       </div>
                     </div>

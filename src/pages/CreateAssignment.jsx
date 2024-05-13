@@ -22,8 +22,8 @@ const CreateAssignment = () => {
     const difficultyLevel = form.difficultyLevel.value;
     const deadline = startDate;
 
-    if (marks < 50 || marks > 100) {
-      toast.error("Marks should be greater than 50 and less than 100");
+    if (marks < 10 || marks > 100) {
+      toast.error("Marks should be greater than 10 and less than 100");
       return;
     }
 

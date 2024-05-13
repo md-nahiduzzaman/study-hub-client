@@ -90,7 +90,9 @@ const PendingAssignments = () => {
                     <tr key={assignment._id}>
                       <td>{assignment?.title}</td>
                       <td>{assignment?.marks}</td>
-                      <td>{assignment?.status}</td>
+                      <td className=" font-bold text-red-500">
+                        {assignment?.status}
+                      </td>
                       <td>{assignment?.examineeName}</td>
 
                       <td>
