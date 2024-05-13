@@ -27,6 +27,12 @@ const CreateAssignment = () => {
       return;
     }
 
+    const today = new Date();
+    if (deadline < today) {
+      toast.error("Please select a future date");
+      return;
+    }
+
     const assignmentData = {
       title,
       description,

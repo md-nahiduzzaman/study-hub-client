@@ -41,7 +41,9 @@ const PendingAssignments = () => {
 
     // Validate obtained marks
     if (obtainMarks > marks) {
-      setNumberError(`Obtained marks should be less than or equal to ${marks}`);
+      setNumberError(
+        `Total marks is ${marks}, Obtained marks should not be more than total marks`
+      );
       return;
     }
 
