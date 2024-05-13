@@ -66,15 +66,18 @@ const PendingAssignments = () => {
     <>
       <div>
         <div className="container mx-auto px-2  min-h-[calc(100vh-168px)]">
-          <div>
-            <h1>this is pending assignment page</h1>
+          <div className="container p-4 mx-auto my-6 space-y-1 text-center flex flex-col items-center justify-center">
+            <h1 className="pb-3 text-3xl font-bold md:text-4xl">
+              Pending Assignments
+            </h1>
           </div>
+
           <div>
             <div className="overflow-x-auto">
               <table className="table">
                 {/* head */}
                 <thead>
-                  <tr>
+                  <tr className="text-base">
                     <th>Assignment Title</th>
                     <th>Assignment Marks</th>
                     <th>Assignment Status</th>
@@ -93,7 +96,7 @@ const PendingAssignments = () => {
                       <td>
                         <div>
                           <button
-                            className="btn"
+                            className="btn bg-[#59c6bc] text-white hover:bg-[#368880]"
                             onClick={() =>
                               document
                                 .getElementById(`my_modal_${assignment._id}`)
@@ -107,17 +110,30 @@ const PendingAssignments = () => {
                             className="modal text-center"
                           >
                             <div className="modal-box">
-                              <h3 className="font-bold text-lg">
-                                Submit Result
-                              </h3>
+                              <div className="mb-8">
+                                <h1 className="font-semibold text-2xl">
+                                  Submit Result
+                                </h1>
+                              </div>
+
                               <div>
-                                <p>
+                                <p className="font-semibold text-base">
                                   Link:{" "}
-                                  <a href={assignment?.docLink} target="blank">
-                                    Doc Link
-                                  </a>
+                                  <span className="underline">
+                                    <a
+                                      href={assignment?.docLink}
+                                      target="blank"
+                                    >
+                                      Doc Link
+                                    </a>
+                                  </span>
                                 </p>
-                                <p>Note: {assignment?.note}</p>
+                                <p className="font-semibold text-base w-full">
+                                  Note:{" "}
+                                  <span className="text-gray-400">
+                                    {assignment?.note}
+                                  </span>{" "}
+                                </p>
                               </div>
 
                               <div className="modal-action justify-center">
@@ -154,7 +170,9 @@ const PendingAssignments = () => {
                                   <div className="col-span-2">
                                     <label className="form-control w-full">
                                       <div className="label">
-                                        <span className="label-text">Note</span>
+                                        <span className="label-text">
+                                          Feedback
+                                        </span>
                                       </div>
                                       <textarea
                                         className="textarea textarea-bordered"
@@ -171,7 +189,7 @@ const PendingAssignments = () => {
                                     </p>
                                   )}
                                   {/* if there is a button in form, it will close the modal */}
-                                  <button className="btn mt-2 w-full">
+                                  <button className="btn mt-6 w-full bg-[#59c6bc] text-white hover:bg-[#368880]">
                                     Submit
                                   </button>
                                 </form>

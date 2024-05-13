@@ -72,49 +72,40 @@ const Login = () => {
   };
 
   return (
-    <div className=" bg-slate-100">
+    <div className=" bg-base">
       <div className="container mx-auto px-2  flex min-h-[calc(100vh-168px)]">
-        <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
-          <div className="flex justify-center mx-auto">
-            <div className="text-center justify-center flex flex-col">
-              <img className="w-[100%]" src="/public/Asset 1.png" alt=""></img>
-            </div>
-          </div>
+        <div className="w-full max-w-sm p-6 m-auto mx-auto  rounded-lg shadow-md  border">
           <div>
-            <h1 className="font-bold text-3xl text-center mt-8">
+            <h1 className="font-bold text-3xl text-center mt-4">
               Please Login
             </h1>
           </div>
 
           <form onSubmit={handleSignIn} className="mt-6">
             <div>
-              <label className="block text-sm text-gray-800 dark:text-gray-200">
-                Email
-              </label>
+              <label className="form-control w-full">Email</label>
               <input
                 type="email"
                 name="email"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="input input-bordered  block w-full px-4 py-2 mt-2"
               />
             </div>
 
             <div className="mt-4">
               <div className="flex items-center justify-between">
-                <label className="block text-sm text-gray-800 dark:text-gray-200">
-                  Password
-                </label>
+                <label className="form-control w-full  ">Password</label>
               </div>
 
               <input
                 type="password"
                 name="password"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="input input-bordered  block w-full px-4 py-2 mt-2"
               />
             </div>
             {registerError && <p className="text-red-700">{registerError}</p>}
 
             <div className="mt-6">
-              <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+              <button className="btn w-full bg-[#59c6bc] text-white hover:bg-[#368880]">
                 Sign In
               </button>
             </div>

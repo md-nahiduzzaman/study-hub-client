@@ -40,11 +40,13 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
           <div>
             <div className="flex gap-2 w-full">
               <Link to={`/update/${_id}`} className="w-full">
-                <button className="btn flex-1 w-full">Update</button>
+                <button className="btn flex-1 w-full border-green-500 bg-white hover:bg-green-500">
+                  Update
+                </button>
               </Link>
               <Link className="w-full">
                 <button
-                  className="btn flex-1 w-full"
+                  className="btn flex-1 w-full border-red-500 bg-white hover:bg-red-500"
                   onClick={() => handleDelete(_id, owner)}
                 >
                   Delete
@@ -52,7 +54,9 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
               </Link>
             </div>
             <Link to={`/assignment/${_id}`}>
-              <button className="btn w-full mt-2">View Details</button>
+              <button className="btn w-full bg-[#59c6bc] text-white hover:bg-[#368880] mt-2">
+                View Details
+              </button>
             </Link>
           </div>
         </div>

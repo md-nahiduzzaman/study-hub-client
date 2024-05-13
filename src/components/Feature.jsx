@@ -7,7 +7,7 @@ const Feature = () => {
             <h2 className="pb-3 text-3xl font-bold md:text-4xl">
               Unlock the Power of Collaborative Learning <br /> with StudyCircle
             </h2>
-            <p className="lg:w-[60%] text-center ">
+            <p className="lg:w-[60%] text-center mt-8">
               Join StudyCircle today and experience a revolutionary approach to
               studying with friends. Our platform offers a seamless online
               environment where you can connect with your peers, collaborate on
@@ -26,7 +26,7 @@ const Feature = () => {
                 the comfort of your own space.
               </p>
               <a
-                className="inline-flex items-center space-x-2 text-sm text-violet-400 dark:text-violet-600"
+                className="inline-flex items-center space-x-2 text-sm text-[#59c6bc] "
                 // href="/components"
               >
                 <span>Learn More</span>
@@ -55,7 +55,7 @@ const Feature = () => {
                 motivated and on track.
               </p>
               <a
-                className="inline-flex items-center space-x-2 text-sm text-violet-400 dark:text-violet-600"
+                className="inline-flex items-center space-x-2 text-sm text-[#59c6bc]"
                 // href="/sections"
               >
                 <span>Learn More</span>
@@ -84,7 +84,7 @@ const Feature = () => {
                 discussions to make learning engaging and effective.
               </p>
               <a
-                className="inline-flex items-center space-x-2 text-sm text-violet-400 dark:text-violet-600"
+                className="inline-flex items-center space-x-2 text-sm text-[#59c6bc]"
                 // href="/templates"
               >
                 <span>Learn More</span>
@@ -114,7 +114,7 @@ const Feature = () => {
                 weaknesses.
               </p>
               <a
-                className="inline-flex items-center space-x-2 text-sm text-violet-400 dark:text-violet-600"
+                className="inline-flex items-center space-x-2 text-sm text-[#59c6bc]"
                 // href="/docs"
               >
                 <span>Learn More</span>

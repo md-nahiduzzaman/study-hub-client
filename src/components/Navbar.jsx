@@ -26,9 +26,9 @@ const Navbar = () => {
   );
 
   return (
-    <div>
-      <div className="container mx-auto px-2">
-        <div className="navbar bg-base-100">
+    <div className="border-b-2 border-gray-200">
+      <div className="container mx-auto px-2 ">
+        <div className="navbar bg-base-100 ">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -58,13 +58,18 @@ const Navbar = () => {
                 {navLinks}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">StudyHub</a>
+            <Link
+              to="/"
+              className="btn btn-ghost text-xl font-bold hidden sm:flex"
+            >
+              StudyHub
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navLinks}</ul>
           </div>
-          <div className="navbar-end">
-            <div>
+          <div className="navbar-end items-center">
+            <div className="mr-2">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
                 <input
@@ -94,12 +99,16 @@ const Navbar = () => {
             </div>
             {!user ? (
               <>
-                <div className="flex gap-5 ">
+                <div className="flex gap-2 ">
                   <Link to="/login">
-                    <button className="btn ">Login</button>
+                    <button className="btn border-[#59c6bc] hover:text-white hover:bg-[#368880]">
+                      Login
+                    </button>
                   </Link>
                   <Link to="/register">
-                    <button className="btn ">Register</button>
+                    <button className="btn bg-[#59c6bc] text-white hover:bg-[#368880] ">
+                      Register
+                    </button>
                   </Link>
                 </div>
               </>

@@ -1,61 +1,49 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <div>
-      <footer className="bg-white dark:bg-gray-900">
-        <div className="container flex flex-col items-center justify-between px-6 py-8 mx-auto lg:flex-row">
-          <div className="flex items-center gap-4">
-            <img src="/public/Asset 1.png" alt="" />
-            <h1 className="font-semibold text-4xl">StudyHub</h1>
-          </div>
+    <div className="bg-base-200">
+      <div className="container mx-auto px-2">
+        <footer className="footer p-10  text-base-content">
+          <aside>
+            <h1 className="font-bold text-4xl">StudyHub</h1>
+            <p>
+              It is an online platform designed <br /> to facilitate learning
+              and academic collaboration.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-6 lg:gap-6 lg:mt-0">
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Overview
-            </a>
-
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Features
-            </a>
-
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Careers
-            </a>
-
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Help
-            </a>
-
-            <a
-              href="#"
-              className="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              Privacy
-            </a>
-          </div>
-
-          <p className="mt-6 text-sm text-gray-500 lg:mt-0 dark:text-gray-400">
-            © Copyright 2024 StudyHub.{" "}
-          </p>
-        </div>
-      </footer>
+            <p>Copyright © 2024 - All right reserved</p>
+          </aside>
+          <nav>
+            <h6 className="footer-title">Services</h6>
+            <Link to="/" className="link link-hover">
+              Home
+            </Link>
+            <Link to="/assignments" className="link link-hover">
+              All Assignment
+            </Link>
+            <Link to="/login" className="link link-hover">
+              Login
+            </Link>
+            <Link to="/register" className="link link-hover">
+              Register
+            </Link>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Company</h6>
+            <a className="link link-hover">About us</a>
+            <a className="link link-hover">Contact</a>
+            <a className="link link-hover">Jobs</a>
+            <a className="link link-hover">Press kit</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Legal</h6>
+            <a className="link link-hover">Terms of use</a>
+            <a className="link link-hover">Privacy policy</a>
+            <a className="link link-hover">Cookie policy</a>
+          </nav>
+        </footer>
+      </div>
     </div>
   );
 };

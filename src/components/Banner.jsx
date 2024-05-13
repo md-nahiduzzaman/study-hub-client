@@ -13,9 +13,9 @@ const Banner = () => {
             <div className="text-center">
               <h1 className="text-3xl font-semibold text-white lg:text-6xl  mb-8">
                 Meet, chat, and study with <br />
-                <span className="text-blue-400">your friend</span>
+                <span className="text-[#59c6bc]">your friend</span>
               </h1>
-              <button className="w-full px-5 py-2 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+              <button className="btn bg-[#59c6bc] text-white hover:bg-[#368880] border-none ">
                 Join Now
               </button>
             </div>

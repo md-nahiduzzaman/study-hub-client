@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Assignments = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [assignments, setAssignments] = useState([]);
   const [filter, setFilter] = useState("");
   const axiosSecure = useAxiosSecure();
@@ -52,6 +52,10 @@ const Assignments = () => {
     });
   };
 
+  const handleReset = () => {
+    setFilter("");
+  };
+
   // try {
   //   const { data } = await axios.delete(
   //     `${import.meta.env.VITE_API_URL}/assignment/${id}`
@@ -64,22 +68,39 @@ const Assignments = () => {
   //   toast.error(err?.message);
   // }
 
+  if (loading) {
+    return <span className="loading loading-spinner loading-lg"></span>;
+  }
+
   return (
     <>
       <div>
-        <div className="container mx-auto px-2 min-h-[calc(100vh-168px)]">
+        <div className="container mx-auto px-2 min-h-[100vh]">
           <div>
-            <h1>show all assignment</h1>
-            <div>
+            <div className="container p-4 mx-auto my-6 space-y-1 text-center flex flex-col items-center justify-center">
+              <h1 className="pb-3 text-3xl font-bold md:text-4xl">
+                Explore Assignments
+              </h1>
+              <p className="lg:w-[60%] text-center mt-8">
+                Welcome to the Study Hub's assignment page, where collaborative
+                learning thrives! Here, you'll find a variety of assignments
+                created by your friends and peers. Dive in, engage, and conquer
+                academic challenges together!
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+              <div>
+                <h1>Filter Your Data</h1>
+              </div>
               <div>
                 {/*   Difficulty Level */}
-                <h1>Filter your data</h1>
+
                 <div>
-                  <label className="form-control w-full max-w-xs">
+                  {/* <label className="form-control w-full max-w-xs">
                     <div className="label">
                       <span className="label-text">Difficulty Level</span>
                     </div>
-                  </label>
+                  </label> */}
                   <select
                     onChange={(e) => {
                       setFilter(e.target.value);
@@ -95,6 +116,14 @@ const Assignments = () => {
                     <option value="Hard">Hard</option>
                   </select>
                 </div>
+              </div>
+              <div>
+                <button
+                  className="btn bg-[#59c6bc] text-white hover:bg-[#368880]"
+                  onClick={handleReset}
+                >
+                  Reset
+                </button>
               </div>
             </div>
             <div className="grid grid-cols-1 gap-8 mt-8  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

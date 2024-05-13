@@ -63,17 +63,14 @@ const UpdateAssignment = () => {
   };
 
   return (
-    <div className="bg-slate-100">
-      <div className="container mx-auto px-2 min-h-[calc(100vh-168px)]">
+    <div className="bg-base">
+      <div className="container mx-auto px-2 min-h-[100vh]">
         <div className="flex flex-col items-center justify-center">
-          <div className="mt-6">
-            <h1 className="font-bold text-3xl">Update Assignment</h1>
-          </div>
-
           <form
             onSubmit={handleFormSubmit}
-            className="grid grid-cols-2 gap-4 bg-white p-11 max-w-screen-md mt-7 "
+            className="  grid grid-cols-2 gap-4  p-11 max-w-screen-md mt-7 border rounded-md shadow-md "
           >
+            <h1 className="font-semibold text-2xl">Update Assignment</h1>
             {/* title */}
             <div className="col-span-2 w-full">
               <label className="form-control w-full  ">
@@ -165,7 +162,9 @@ const UpdateAssignment = () => {
             </div>
             {/* submit */}
             <div className="col-span-2">
-              <button className="btn w-full ">Update Assignment</button>
+              <button className="btn w-full bg-[#59c6bc] text-white hover:bg-[#368880]">
+                Update Assignment
+              </button>
             </div>
           </form>
         </div>

@@ -27,13 +27,17 @@ const MySubmitted = () => {
     <>
       <div>
         <div className="container mx-auto px-2  min-h-[calc(100vh-168px)]">
-          <h1>My Submitted</h1>
+          <div className="container p-4 mx-auto my-6 space-y-1 text-center flex flex-col items-center justify-center">
+            <h1 className="pb-3 text-3xl font-bold md:text-4xl">
+              My Submitted Assignment
+            </h1>
+          </div>
           <div>
             <div className="overflow-x-auto">
-              <table className="table border">
+              <table className="table">
                 {/* head */}
                 <thead>
-                  <tr>
+                  <tr className="text-base">
                     <th>Assignment Title</th>
                     <th>Assignment Status</th>
                     <th>Assignment marks</th>
@@ -51,7 +55,7 @@ const MySubmitted = () => {
                       <td>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <button
-                          className="btn"
+                          className="btn bg-[#59c6bc] text-white hover:bg-[#368880]"
                           onClick={() =>
                             document
                               .getElementById(`my_modal_${assignment?._id}`)
