@@ -43,11 +43,7 @@ const UpdateAssignment = () => {
       image,
       difficultyLevel,
       deadline,
-      owner: {
-        email: user?.email,
-        name: user?.displayName,
-        photo: user?.photoURL,
-      },
+      owner,
     };
     console.log(assignmentData);
     try {
