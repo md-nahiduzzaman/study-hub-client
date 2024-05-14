@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -6,13 +5,14 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 const MySubmitted = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  console.log(user);
   const [assignments, setAssignments] = useState([]);
-  const [showIframe, setShowIframe] = useState(false);
+  // const [showIframe, setShowIframe] = useState(false);
   console.log(assignments);
 
-  const toggleIframe = () => {
-    setShowIframe(!showIframe);
-  };
+  // const toggleIframe = () => {
+  //   setShowIframe(!showIframe);
+  // };
 
   useEffect(() => {
     getData();
@@ -20,6 +20,7 @@ const MySubmitted = () => {
 
   const getData = async () => {
     const { data } = await axiosSecure(`/my-submission/${user?.email}`);
+    console.log(data);
     setAssignments(data);
   };
 

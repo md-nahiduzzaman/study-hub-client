@@ -23,7 +23,6 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
 
   //create user with email & pass
   const createUser = (email, password) => {
@@ -47,15 +46,15 @@ const AuthProvider = ({ children }) => {
 
   // logout user
   const logout = async () => {
-    setUser(null);
-
+    setLoading(true);
+    // setUser(null);
     const { data } = await axios(`${import.meta.env.VITE_API_URL}/logout`, {
       withCredentials: true,
     });
     console.log(data);
-
-    signOut(auth);
+    // setUser(null);
     toast.success("Successfully Logout!");
+    return signOut(auth);
   };
 
   //google login
@@ -71,14 +70,29 @@ const AuthProvider = ({ children }) => {
 
   //user observer
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("CurrentUser:", currentUser);
       setLoading(false);
     });
-    return () => unsubscribe();
+    return () => {
+      return unsubscribe();
+    };
   }, []);
+
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     setUser(user);
+  //     console.log("user---", user);
+  //     // if (user) {
+  //     //   setUser(user);
+  //     // }
+  //     setLoading(false);
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
+
+  console.log(user);
 
   const allValues = {
     createUser,

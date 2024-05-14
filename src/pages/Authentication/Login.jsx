@@ -33,6 +33,7 @@ const Login = () => {
 
     try {
       const result = await signInUser(email, pass);
+      console.log(result.user);
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/jwt`,
         {

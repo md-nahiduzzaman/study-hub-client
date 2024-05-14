@@ -11,6 +11,7 @@ const PendingAssignments = () => {
   const { user } = useAuth();
   const [assignments, setAssignments] = useState([]);
   console.log(assignments);
+  console.log(user);
 
   useEffect(() => {
     getData();
