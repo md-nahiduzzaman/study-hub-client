@@ -83,13 +83,14 @@ const MySubmitted = () => {
                             <p className="py-4">
                               Press ESC key or click outside to close
                             </p>
-                            <iframe
+                            <embed
                               title="PDF Viewer"
+                              type=""
                               src={assignment?.docLink}
                               width="100%"
                               height="500px"
                               style={{ border: "none" }}
-                            ></iframe>
+                            ></embed>
                           </div>
                           <form method="dialog" className="modal-backdrop">
                             <button>close</button>
