@@ -174,7 +174,7 @@ const Register = () => {
 
           <p className="mt-8 text-xs font-light text-center text-gray-400">
             {" "}
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <Link to="/login">
               <span className="underline underline-offset-2">Login</span>
             </Link>
